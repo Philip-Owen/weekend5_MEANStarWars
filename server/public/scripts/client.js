@@ -1,0 +1,1 @@
+const swapiApp = angular.module('swapiApp', ['ngRoute', 'ngMaterial']);
