@@ -110,7 +110,4 @@ swapiApp.service('SearchService', ['$http', function($http) {
             });
     }
 
-
-    
-
 }]);
