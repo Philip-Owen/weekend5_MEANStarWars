@@ -25,7 +25,7 @@ swapiApp.service('FavoritesService', ['$http', function($http) {
             $http.get(favorites[i].url)
                 .then(function (response) {
                     // console.log('converted favorites: ', response.data);
-                    
+                    response.data._id = favorites[i]._id;
                     if (favorites[i].hasOwnProperty('speciesInfo')) {
                         response.data.speciesInfo = favorites[i].speciesInfo;
                     }
@@ -44,5 +44,19 @@ swapiApp.service('FavoritesService', ['$http', function($http) {
     }
 
     self.getFavorites();
+
+
+    self.removeFavorite = function(item) {
+        console.log(item._id);
+        $http.delete('/favorites/' + item._id)
+            .then(function (response) {
+                console.log('deleted favorite: ', response.data);
+                self.getFavorites();
+
+            })
+            .catch(function (response) {
+                console.log('error deleting favorites:', response);
+            });
+    };
 
 }]);
