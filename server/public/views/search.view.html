@@ -17,7 +17,7 @@
             <p></p>
         </div>
         <div class="addFavorite">
-            <p>Add Favorite</p>
+            <p ng-click="vm.addFav(people)">Add Favorite</p>
         </div>        
     </div>
     <div ng-if="vm.searchDivs.planets" class="itemList" ng-repeat="planets in vm.searchReturn.list">
@@ -27,7 +27,7 @@
             <p>{{planets.population}}</p>
         </div>
         <div class="addFavorite">
-            <p>Add Favorite</p>
+            <p ng-click="vm.addFav(planets)">Add Favorite</p>
         </div>        
     </div>
     <div ng-if="vm.searchDivs.films" class="itemList" ng-repeat="films in vm.searchReturn.list">
