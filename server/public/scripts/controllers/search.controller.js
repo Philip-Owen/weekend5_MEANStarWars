@@ -48,7 +48,9 @@ swapiApp.controller('SearchController', ['SearchService', function(SearchService
     }
     
 
-    
+    self.addFav = function(item) {
+        SearchService.addToFavorites(item);
+    }
 
 
 }]);

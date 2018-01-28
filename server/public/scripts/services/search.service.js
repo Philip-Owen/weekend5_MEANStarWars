@@ -27,7 +27,7 @@ swapiApp.service('SearchService', ['$http', function($http) {
         if (searchInfo.url == 'people') {
             $http.get(url + searchInfo.url + search + searchInfo.searchString)
                 .then(function (response) {     
-                    // console.log(`${searchInfo.searchString} search: `, response.data.results);
+                    console.log(`${searchInfo.searchString} search: `, response.data.results);
                     self.searchReturn.list = response.data.results;
                     additionalPeopleInfo(response.data.results);
                 })
@@ -60,7 +60,9 @@ swapiApp.service('SearchService', ['$http', function($http) {
     function additionalPeopleInfo(results) {
         // get species information
         for (let i = 0; i < results.length; i++) {
-            if (results[i].species[0].length > 0) {
+            if (results[i].species[0] != undefined) {
+                console.log(results[i].species[0].length);
+                
                 $http.get(results[i].species[0])
                     .then(function (response) {
                         // console.log('swapi species search: ', response.data);
@@ -87,6 +89,26 @@ swapiApp.service('SearchService', ['$http', function($http) {
         }
     }
     
+    self.addToFavorites = function(item) {
+        let favoriteToAdd = {};
+        favoriteToAdd.url = item.url;
+
+        if (item.hasOwnProperty('species_data')) {
+            favoriteToAdd.additionalInfo = item.species_data.name
+        }
+
+        console.log(favoriteToAdd);
+        
+        $http.post('/favorites', favoriteToAdd)
+            .then(function (response) {
+                console.log('favorites response: ', response.data);
+                results[i].homeworld = response.data
+            })
+            .catch(function (response) {
+                console.log('error saving favorite:', response);
+            });
+    }
+
 
     
 
