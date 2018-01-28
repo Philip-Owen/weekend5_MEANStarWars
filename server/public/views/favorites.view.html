@@ -1,16 +1,50 @@
 <section>
-    <h3>Your Favorites:</h3>
-    <h3>Number of Favorites: 2</h3>
+    <div id="favoritesMain">
+        <div>
+            <h3 id="favoritesTitle">Your Favorites:</h3>
+        </div>
+        <div>
+            <h3 id="yourFavorites">Number of Favorites: {{vm.favoritesToList.list.length}}</h3>
+        </div>
+    </div>
+
 </section>
 <section>
-    <div class="itemList">
-        <div class="itemInfo">
-            <p>Luke SkyWalker</p>
-            <p>Born: 19BBY</p>
-            <p>Male Human</p>
-        </div>
-        <div class="removeFavorite">
-            <p>Remove Favorite</p>
-        </div>        
+    <div class="itemList" ng-repeat="favorite in vm.favoritesToList.list">
+        
+        <!-- people -->
+        <p class="bold" ng-if="favorite.birth_year">{{favorite.name}}</p>
+        <p ng-if="favorite.birth_year">Born: {{favorite.birth_year}}</p>
+        <p ng-if="favorite.birth_year"><span class="capitalize">{{favorite.gender}}</span> {{favorite.speciesInfo}}</p>
+        <p ng-if="favorite.birth_year">Height: {{favorite.height}} cm</p>
+
+        <!-- planets -->
+        <p class="bold" ng-if="favorite.climate">{{favorite.name}}</p>
+        <p ng-if="favorite.climate" class="capitalize">Climate: {{favorite.climate}}</p>
+        <p ng-if="favorite.climate">Population: {{favorite.population}}</p>
+        <p ng-if="favorite.climate">Day Length: {{favorite.rotation_period}} hours</p>
+
+        <!-- films -->
+        <p class="bold" ng-if="favorite.title">{{favorite.title}}</p>
+        <p ng-if="favorite.title">Episode {{favorite.episode_id}}</p>
+        <p ng-if="favorite.title">Released: {{favorite.release_date}}</p>
+        <p ng-if="favorite.title">Directed by: {{favorite.director}}</p>
+
+        <!-- species -->
+        <p class="bold" ng-if="favorite.classification">{{favorite.name}}</p>
+        <p ng-if="favorite.classification" class="capitalize">Classification: {{favorite.classification}}</p>
+        <p ng-if="favorite.classification">Language: {{favorite.language}}</p>
+        <p ng-if="favorite.classification">Homeworld: {{favorite.homeworldInfo}}</p>  
+
+        <!-- vehicles and starships -->
+        <p class="bold" ng-if="favorite.model">{{favorite.name}}</p>
+        <p ng-if="favorite.model">Model: {{favorite.model}}</p>
+        <p ng-if="favorite.model">Crew size: {{favorite.crew}}</p>
+        <p ng-if="favorite.model">Cost in credits: {{favorite.cost_in_credits}}</p>
+            
+            
+        <p ng-click="vm.addFav(vehicles)">Remove Favorite</p>
+   
+   
     </div>
 </section>
