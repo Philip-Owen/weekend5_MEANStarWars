@@ -41,4 +41,17 @@ router.get('/', (req,res) => {
     })
 });
 
+router.delete('/:id', (req,res) => {
+    let favId = req.params.id;
+    Favorite.findByIdAndRemove({'_id': favId }, (err, removedFav) => {
+        if (err) {
+            console.log('error on removedFav', err);
+            res.sendStatus(500);
+        } else {
+            console.log('found removedFav', removedFav);
+            res.sendStatus(200);
+        }
+    })
+});
+
 module.exports = router;

@@ -11,6 +11,12 @@ swapiApp.controller('FavoritesController', ['FavoritesService', function(Favorit
     self.getFavorites();
 
     console.log(self.favoritesToList);
+
+    self.removeFavorite = function(item) {
+        FavoritesService.removeFavorite(item);
+    };
+    
+
     
 
 }]);
