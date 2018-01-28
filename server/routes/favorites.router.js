@@ -29,4 +29,16 @@ router.post('/', (req,res)=> {
     })
 });
 
+router.get('/', (req,res) => {
+    Favorite.find({}, (err, favorites) => {
+        if (err) {
+            console.log('error on get favorites', err);
+            res.sendStatus(500);
+        } else {
+            console.log('found favorites', favorites);
+            res.send(favorites);
+        }
+    })
+});
+
 module.exports = router;
