@@ -1,4 +1,6 @@
+
 .itemList {
+    position: relative;
     display: inline-block;
     border: 1px solid black;
     width: 250px;
@@ -8,4 +10,8 @@
 
 .capitalize {
     text-transform: capitalize;
+}
+
+.bold {
+    font-weight: bold;
 }
