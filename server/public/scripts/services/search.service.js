@@ -38,7 +38,7 @@ swapiApp.service('SearchService', ['$http', function($http) {
             $http.get(url + searchInfo.url + search + searchInfo.searchString)
                 .then(function (response) {     
                     
-                    // console.log(`${searchInfo.searchString} search: `, response.data.results);
+                    console.log(`${searchInfo.searchString} search: `, response.data.results);
                     additonalSpeciesInfo(response.data.results);
                     self.searchReturn.list = response.data.results;
                 })
@@ -61,7 +61,7 @@ swapiApp.service('SearchService', ['$http', function($http) {
         // get species information
         for (let i = 0; i < results.length; i++) {
             if (results[i].species[0] != undefined) {
-                console.log(results[i].species[0].length);
+                // console.log(results[i].species[0].length);
                 
                 $http.get(results[i].species[0])
                     .then(function (response) {
@@ -80,8 +80,8 @@ swapiApp.service('SearchService', ['$http', function($http) {
         for (let i = 0; i < results.length; i++) {
             $http.get(results[i].homeworld)
             .then(function (response) {
-                console.log('swapi species search: ', response.data);
-                results[i].homeworld = response.data
+                // console.log('swapi species search: ', response.data);
+                results[i].homeworld_data = response.data
             })
             .catch(function (response) {
                 console.log('swapi search error :', response);
@@ -94,15 +94,16 @@ swapiApp.service('SearchService', ['$http', function($http) {
         favoriteToAdd.url = item.url;
 
         if (item.hasOwnProperty('species_data')) {
-            favoriteToAdd.additionalInfo = item.species_data.name
+            favoriteToAdd.speciesInfo = item.species_data.name
         }
 
-        console.log(favoriteToAdd);
+        if (item.hasOwnProperty('homeworld_data')) {
+            favoriteToAdd.homeworldInfo = item.homeworld_data.name
+        }
         
         $http.post('/favorites', favoriteToAdd)
             .then(function (response) {
-                console.log('favorites response: ', response.data);
-                results[i].homeworld = response.data
+                // console.log('favorites response: ', response);
             })
             .catch(function (response) {
                 console.log('error saving favorite:', response);
