@@ -20,6 +20,7 @@ swapiApp.service('FavoritesService', ['$http', function($http) {
     }
 
     function getFavoritesInfo(favorites) {
+        let favoritesArray = []
         for (let i = 0; i < favorites.length; i++) {
             $http.get(favorites[i].url)
                 .then(function (response) {
@@ -33,13 +34,15 @@ swapiApp.service('FavoritesService', ['$http', function($http) {
                         response.data.homeworldInfo = favorites[i].homeworldInfo;
                     }
 
-                    self.favorites.list.push(response.data);
+                    favoritesArray.push(response.data);
                 })
                 .catch(function (response) {
                     console.log('error converting favorites:', response);
                 });
-            
+            self.favorites.list = favoritesArray;
         }
     }
+
+    self.getFavorites();
 
 }]);

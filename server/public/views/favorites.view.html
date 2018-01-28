@@ -9,8 +9,8 @@
     </div>
 
 </section>
-<section>
-    <div class="itemList" ng-repeat="favorite in vm.favoritesToList.list">
+<section layout-xs="row" layout-wrap>
+    <div flex="40%" class="itemList" ng-repeat="favorite in vm.favoritesToList.list">
         
         <!-- people -->
         <p class="bold" ng-if="favorite.birth_year">{{favorite.name}}</p>
