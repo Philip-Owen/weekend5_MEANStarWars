@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const favoritesRouter = require('./routes/favorites.router')
 
 
 
@@ -10,24 +11,25 @@ app.use(bodyParser.json()); // needed for angular requests
 
 /** ---------- EXPRESS ROUTES ---------- **/
 
+app.use('/favorites', favoritesRouter)
 
 /** ---------- MONGOOSE ------------ **/
 const mongoose = require('mongoose');
 // hr-app is the name of our database
 // 27017 is the default mongo port number
-// const databaseUrl = 'mongodb://localhost:27017/**CHANGE ME**';
+const databaseUrl = 'mongodb://localhost:27017/favorites';
 
 // connect to mongoDB
-// mongoose.connect(databaseUrl);
+mongoose.connect(databaseUrl);
 
 // // optional output from connectione events
-// mongoose.connection.on('connected', () => {
-//     console.log('mongoose is connected');    
-// });
+mongoose.connection.on('connected', () => {
+    console.log('mongoose is connected');    
+});
 
-// mongoose.connection.on('error', () => {
-//     console.log('mongoose connection failed'); 
-// });
+mongoose.connection.on('error', () => {
+    console.log('mongoose connection failed'); 
+});
 
 
 /** ---------- START SERVER ---------- **/

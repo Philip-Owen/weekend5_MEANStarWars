@@ -39,7 +39,7 @@
             <p>Prouced by: {{films.producer}}</p>
         </div>
         <div class="addFavorite">
-            <p>Add Favorite</p>
+            <p ng-click="vm.addFav(films)">Add Favorite</p>
         </div>        
     </div>
     <div ng-if="vm.searchDivs.species" class="itemList" ng-repeat="species in vm.searchReturn.list">
@@ -47,10 +47,10 @@
             <p>{{species.name}}</p>
             <p class="capitalize">Classification: {{species.classification}}</p>
             <p>{{species.language}}</p>
-            <p>{{species.homeworld.name}}</p>
+            <p>{{species.homeworld_data.name}}</p>
         </div>
         <div class="addFavorite">
-            <p>Add Favorite</p>
+            <p ng-click="vm.addFav(species)">Add Favorite</p>
         </div>        
     </div>
     <div ng-if="vm.searchDivs.vehicles" class="itemList" ng-repeat="vehicles in vm.searchReturn.list">
@@ -62,7 +62,7 @@
             <p>Cost in credits: {{vehicles.cost_in_credits}}</p>
         </div>
         <div class="addFavorite">
-            <p>Add Favorite</p>
+            <p ng-click="vm.addFav(vehicles)">Add Favorite</p>
         </div>        
     </div>
     <div ng-if="vm.searchDivs.starships" class="itemList" ng-repeat="starships in vm.searchReturn.list">
@@ -74,7 +74,7 @@
             <p>Cost in credits: {{starships.cost_in_credits}}</p>
         </div>
         <div class="addFavorite">
-            <p>Add Favorite</p>
+            <p ng-click="vm.addFav(starships)">Add Favorite</p>
         </div>        
     </div>
 </section>
