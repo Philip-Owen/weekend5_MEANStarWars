@@ -1,5 +1,5 @@
 
-<section>
+<section id="searchDiv">
     <select ng-model="vm.searchInfo.url" ng-options="key as key for (key, value) in vm.searchFilters.list">
     </select>
     <input ng-model="vm.searchInfo.searchString">
@@ -7,74 +7,48 @@
 </section>
 
 <section>
-    <h3>Results:</h3>
-    <h3>Number of Favorites:</h3>
-    <div ng-if="vm.searchDivs.people" class="itemList" ng-repeat="people in vm.searchReturn.list">
-        <div class="itemInfo">
-            <p>{{people.name}}</p>
-            <p>Born: {{people.birth_year}}</p>
-            <p><span class="capitalize">{{people.gender}}</span> {{people.species_data.name}}</p>
-            <p></p>
+    <div layout-sm="row" id="resultsMain">
+        <div flex>
+            <h3>Results:</h3>
         </div>
-        <div class="addFavorite">
-            <p ng-click="vm.addFav(people)">Add Favorite</p>
-        </div>        
+        <div flex>
+            <h3>Number of Favorites:</h3>
+        </div>
     </div>
-    <div ng-if="vm.searchDivs.planets" class="itemList" ng-repeat="planets in vm.searchReturn.list">
-        <div class="itemInfo">
-            <p>{{planets.name}}</p>
-            <p class="capitalize">Climate: {{planets.climate}}</p>
-            <p>{{planets.population}}</p>
+    <div layout-xs="row" layout-wrap>
+        <div flex="40%" class="itemList" ng-repeat="item in vm.searchReturn.list">
+            <!-- people -->
+            <p class="bold" ng-if="item.birth_year">{{item.name}}</p>
+            <p ng-if="item.birth_year">Born: {{item.birth_year}}</p>
+            <p ng-if="item.birth_year"><span class="capitalize">{{item.gender}}</span> {{item.speciesInfo.name}}</p>
+            <p ng-if="item.birth_year">Height: {{item.height}} cm</p>
+
+            <!-- planets -->
+            <p class="bold" ng-if="item.climate">{{item.name}}</p>
+            <p ng-if="item.climate" class="capitalize">Climate: {{item.climate}}</p>
+            <p ng-if="item.climate">Population: {{item.population}}</p>
+            <p ng-if="item.climate">Day Length: {{item.rotation_period}} hours</p>
+
+            <!-- films -->
+            <p class="bold" ng-if="item.title">{{item.title}}</p>
+            <p ng-if="item.title">Episode {{item.episode_id}}</p>
+            <p ng-if="item.title">Released: {{item.release_date}}</p>
+            <p ng-if="item.title">Directed by: {{item.director}}</p>
+
+            <!-- species -->
+            <p class="bold" ng-if="item.classification">{{item.name}}</p>
+            <p ng-if="item.classification" class="capitalize">Classification: {{item.classification}}</p>
+            <p ng-if="item.classification">Language: {{item.language}}</p>
+            <p ng-if="item.classification">Homeworld: {{item.homeworldInfo.name}}</p>  
+
+            <!-- vehicles and starships -->
+            <p class="bold" ng-if="item.model">{{item.name}}</p>
+            <p ng-if="item.model">Model: {{item.model}}</p>
+            <p ng-if="item.model">Crew size: {{item.crew}}</p>
+            <p ng-if="item.model">Cost in credits: {{item.cost_in_credits}}</p>
+                
+            <!-- add favorite -->
+            <p ng-click="vm.addFav(item)">Add Favorite</p>
         </div>
-        <div class="addFavorite">
-            <p ng-click="vm.addFav(planets)">Add Favorite</p>
-        </div>        
-    </div>
-    <div ng-if="vm.searchDivs.films" class="itemList" ng-repeat="films in vm.searchReturn.list">
-        <div class="itemInfo">
-            <p>{{films.title}}</p>
-            <p>Episode {{films.episode_id}}</p>
-            <p>Released: {{films.release_date}}</p>
-            <p>Directed by: {{films.director}}</p>
-            <p>Prouced by: {{films.producer}}</p>
-        </div>
-        <div class="addFavorite">
-            <p ng-click="vm.addFav(films)">Add Favorite</p>
-        </div>        
-    </div>
-    <div ng-if="vm.searchDivs.species" class="itemList" ng-repeat="species in vm.searchReturn.list">
-        <div class="itemInfo">
-            <p>{{species.name}}</p>
-            <p class="capitalize">Classification: {{species.classification}}</p>
-            <p>{{species.language}}</p>
-            <p>{{species.homeworld_data.name}}</p>
-        </div>
-        <div class="addFavorite">
-            <p ng-click="vm.addFav(species)">Add Favorite</p>
-        </div>        
-    </div>
-    <div ng-if="vm.searchDivs.vehicles" class="itemList" ng-repeat="vehicles in vm.searchReturn.list">
-        <div class="itemInfo">
-            <p>{{vehicles.name}}</p>
-            <p>Model: {{vehicles.model}}</p>
-            <p>Manufacturer: {{vehicles.manufacturer}}</p>
-            <p>Crew size: {{vehicles.crew}}</p>
-            <p>Cost in credits: {{vehicles.cost_in_credits}}</p>
-        </div>
-        <div class="addFavorite">
-            <p ng-click="vm.addFav(vehicles)">Add Favorite</p>
-        </div>        
-    </div>
-    <div ng-if="vm.searchDivs.starships" class="itemList" ng-repeat="starships in vm.searchReturn.list">
-        <div class="itemInfo">
-            <p>{{starships.name}}</p>
-            <p>Model: {{starships.model}}</p>
-            <p>Manufacturer: {{starships.manufacturer}}</p>
-            <p>Crew size: {{starships.crew}}</p>
-            <p>Cost in credits: {{starships.cost_in_credits}}</p>
-        </div>
-        <div class="addFavorite">
-            <p ng-click="vm.addFav(starships)">Add Favorite</p>
-        </div>        
     </div>
 </section>

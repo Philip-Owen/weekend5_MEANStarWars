@@ -15,36 +15,9 @@ swapiApp.controller('SearchController', ['SearchService', function(SearchService
         starships: false,
     }
 
-    function toggleSearchDivs(params) {
-        Object.keys(self.searchDivs).forEach(v => self.searchDivs[v] = false);
-        switch (params) {
-            case 'people':
-                self.searchDivs.people = true;
-                break;
-            case 'planets':
-                self.searchDivs.planets = true;
-                break;
-            case 'films':
-                self.searchDivs.films = true;
-                break;
-            case 'species':
-                self.searchDivs.species = true;
-                break;
-            case 'vehicles':
-                self.searchDivs.vehicles = true;
-                break;
-            case 'starships':
-                self.searchDivs.starships = true;
-                break;
-        }
-
-    }
-
     self.searchClick = function(filter) {
         // console.log('searchClick:', filter);
-        toggleSearchDivs(filter.url)
         SearchService.searchQuery(filter);
-        // console.log('from service:', self.searchReturn);
     }
     
 

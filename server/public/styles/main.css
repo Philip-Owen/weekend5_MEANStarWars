@@ -1,9 +1,11 @@
-
+p {
+    margin: 0;
+}
 .itemList {
     position: relative;
     display: inline-block;
     border: 1px solid black;
-    width: 250px;
+    width: 280px;
     height: 250px;
     margin: 20px;
 }
@@ -14,4 +16,8 @@
 
 .bold {
     font-weight: bold;
+}
+
+#searchDiv {
+    margin: 20px;
 }
