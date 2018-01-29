@@ -3,7 +3,7 @@ swapiApp.controller('FavoritesController', ['FavoritesService', function(Favorit
     const self = this;
 
     self.favoritesToList = FavoritesService.favorites 
-
+    self.customFullscreen = false;
     self.getFavorites = function() {
         FavoritesService.getFavorites();
     }
@@ -16,7 +16,4 @@ swapiApp.controller('FavoritesController', ['FavoritesService', function(Favorit
         FavoritesService.removeFavorite(item);
     };
     
-
-    
-
 }]);

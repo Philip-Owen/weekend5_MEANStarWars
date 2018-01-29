@@ -1,4 +1,4 @@
-const swapiApp = angular.module('swapiApp', ['ngRoute', 'ngMaterial']);
+const swapiApp = angular.module('swapiApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 // swapiApp configuration
 swapiApp.config(function($routeProvider) {
@@ -16,3 +16,5 @@ swapiApp.config(function($routeProvider) {
             { redirectTo: '/search' }
         );
 });
+
+

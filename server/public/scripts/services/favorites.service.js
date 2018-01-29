@@ -1,4 +1,4 @@
-swapiApp.service('FavoritesService', ['$http', function($http) {
+swapiApp.service('FavoritesService', ['$http','$mdDialog', function($http, $mdDialog) {
     console.log('FavoritesService Loaded');
     
     const self = this;
@@ -51,12 +51,40 @@ swapiApp.service('FavoritesService', ['$http', function($http) {
         $http.delete('/favorites/' + item._id)
             .then(function (response) {
                 console.log('deleted favorite: ', response.data);
+                removeFavoritesDialog(item)
                 self.getFavorites();
-
+                
             })
             .catch(function (response) {
                 console.log('error deleting favorites:', response);
             });
     };
+    
+    function removeFavoritesDialog(favorite) {
+        let item;
+        if (favorite.hasOwnProperty('name')) {
+            item = favorite.name
+        }
+        if (favorite.hasOwnProperty('title')) {
+            item = favorite.title
+        }
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title('A long time ago you favorited this...')
+            .textContent(`${item} has been removed from your favorites.`)
+            .ariaLabel('Removed Favorite')
+            .ok('May the Force be with you!')
+            // Or you can specify the rect to do the transition from
+            .openFrom({
+              top: -50,
+              width: 30,
+              height: 80
+            })
+            .closeTo({
+              left: 1500
+            })
+        );
+      };   
 
 }]);

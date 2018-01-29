@@ -1,6 +1,7 @@
 
 <section id="searchDiv">
-    <select ng-model="vm.searchInfo.url" ng-options="key as key for (key, value) in vm.searchFilters.list">
+    <select ng-model="vm.searchInfo.url" ng-options="name as name for (name, value) in vm.searchFilters.list">
+        <option value="Categories">Categories</option>
     </select>
     <input ng-model="vm.searchInfo.searchString">
     <button ng-click="vm.searchClick(vm.searchInfo)">Search</button>
@@ -11,44 +12,44 @@
         <div flex>
             <h3>Results:</h3>
         </div>
-        <div flex>
-            <h3>Number of Favorites:</h3>
-        </div>
     </div>
     <div layout-xs="row" layout-wrap>
-        <div flex="40%" class="itemList" ng-repeat="item in vm.searchReturn.list">
+        <div flex="100" class="itemList" ng-repeat="item in vm.searchReturn.list">
+
+            <p class="nameTitle" ng-if="item.name">{{item.name}}</p>
+            
             <!-- people -->
-            <p class="bold" ng-if="item.birth_year">{{item.name}}</p>
-            <p ng-if="item.birth_year">Born: {{item.birth_year}}</p>
-            <p ng-if="item.birth_year"><span class="capitalize">{{item.gender}}</span> {{item.speciesInfo.name}}</p>
-            <p ng-if="item.birth_year">Height: {{item.height}} cm</p>
+            <p class="itemAttr" ng-if="item.birth_year">Born: {{item.birth_year}}</p>
+            <p class="itemAttr" ng-if="item.birth_year"><span class="capitalize">{{item.gender}}</span> {{item.speciesInfo.name}}</p>
+            <p class="itemAttr" ng-if="item.birth_year">Height: {{item.height}} cm</p>
 
             <!-- planets -->
-            <p class="bold" ng-if="item.climate">{{item.name}}</p>
-            <p ng-if="item.climate" class="capitalize">Climate: {{item.climate}}</p>
-            <p ng-if="item.climate">Population: {{item.population}}</p>
-            <p ng-if="item.climate">Day Length: {{item.rotation_period}} hours</p>
+            <p class="itemAttr capitalize" ng-if="item.climate">Climate: {{item.climate}}</p>
+            <p class="itemAttr" ng-if="item.climate">Population: {{item.population}}</p>
+            <p class="itemAttr" ng-if="item.climate">Day Length: {{item.rotation_period}} hours</p>
 
             <!-- films -->
-            <p class="bold" ng-if="item.title">{{item.title}}</p>
-            <p ng-if="item.title">Episode {{item.episode_id}}</p>
-            <p ng-if="item.title">Released: {{item.release_date}}</p>
-            <p ng-if="item.title">Directed by: {{item.director}}</p>
+            <p class="nameTitle" ng-if="item.title">{{item.title}}</p>
+            <p class="itemAttr" ng-if="item.title">Episode {{item.episode_id}}</p>
+            <p class="itemAttr" ng-if="item.title">Released: {{item.release_date}}</p>
+            <p class="itemAttr" ng-if="item.title">Directed by: {{item.director}}</p>
 
             <!-- species -->
-            <p class="bold" ng-if="item.classification">{{item.name}}</p>
-            <p ng-if="item.classification" class="capitalize">Classification: {{item.classification}}</p>
-            <p ng-if="item.classification">Language: {{item.language}}</p>
-            <p ng-if="item.classification">Homeworld: {{item.homeworldInfo.name}}</p>  
+            <p class="itemAttr capitalize" ng-if="item.classification">Classification: {{item.classification}}</p>
+            <p class="itemAttr capitalize" ng-if="item.classification">Language: {{item.language}}</p>
+            <p class="itemAttr" ng-if="item.classification">Homeworld: {{item.homeworldInfo.name}}</p>  
 
             <!-- vehicles and starships -->
-            <p class="bold" ng-if="item.model">{{item.name}}</p>
-            <p ng-if="item.model">Model: {{item.model}}</p>
-            <p ng-if="item.model">Crew size: {{item.crew}}</p>
-            <p ng-if="item.model">Cost in credits: {{item.cost_in_credits}}</p>
-                
+            <p class="itemAttr capitalize" ng-if="item.vehicle_class">Class: {{item.vehicle_class}}</p>
+            <p class="itemAttr capitalize" ng-if="item.starship_class">Class: {{item.starship_class}}</p>
+            <p class="itemAttr" ng-if="item.model">Crew size: {{item.crew}}</p>
+            <p class="itemAttr capitalize" ng-if="item.model">Cost in credits: {{item.cost_in_credits}}</p>
+            
             <!-- add favorite -->
-            <p ng-click="vm.addFav(item)">Add Favorite</p>
+            <div ng-click="vm.addFav(item)" class="favoriteIcon">
+                <i class="far fa-star addFavorite"></i>
+                <span>Add Favorite</span>
+            </div>
         </div>
     </div>
 </section>

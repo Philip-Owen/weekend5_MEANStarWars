@@ -10,41 +10,41 @@
 
 </section>
 <section layout-xs="row" layout-wrap>
-    <div flex="40%" class="itemList" ng-repeat="favorite in vm.favoritesToList.list">
+    <div flex="100" class="itemList" ng-repeat="favorite in vm.favoritesToList.list">
         
+        <p ng-if="favorite.name" class="nameTitle">{{favorite.name}}</p>
+
         <!-- people -->
-        <p class="bold" ng-if="favorite.birth_year">{{favorite.name}}</p>
-        <p ng-if="favorite.birth_year">Born: {{favorite.birth_year}}</p>
-        <p ng-if="favorite.birth_year"><span class="capitalize">{{favorite.gender}}</span> {{favorite.speciesInfo}}</p>
-        <p ng-if="favorite.birth_year">Height: {{favorite.height}} cm</p>
+        
+        <p class="itemAttr" ng-if="favorite.birth_year">Born: {{favorite.birth_year}}</p>
+        <p class="itemAttr"ng-if="favorite.birth_year"><span class="capitalize">{{favorite.gender}}</span> {{favorite.speciesInfo}}</p>
+        <p class="itemAttr"ng-if="favorite.birth_year">Height: {{favorite.height}} cm</p>
 
         <!-- planets -->
-        <p class="bold" ng-if="favorite.climate">{{favorite.name}}</p>
-        <p ng-if="favorite.climate" class="capitalize">Climate: {{favorite.climate}}</p>
-        <p ng-if="favorite.climate">Population: {{favorite.population}}</p>
-        <p ng-if="favorite.climate">Day Length: {{favorite.rotation_period}} hours</p>
+        <p class="itemAttr capitalize" ng-if="favorite.climate">Climate: {{favorite.climate}}</p>
+        <p class="itemAttr" ng-if="favorite.climate">Population: {{favorite.population}}</p>
+        <p class="itemAttr" ng-if="favorite.climate">Day Length: {{favorite.rotation_period}} hours</p>
 
         <!-- films -->
-        <p class="bold" ng-if="favorite.title">{{favorite.title}}</p>
-        <p ng-if="favorite.title">Episode {{favorite.episode_id}}</p>
-        <p ng-if="favorite.title">Released: {{favorite.release_date}}</p>
-        <p ng-if="favorite.title">Directed by: {{favorite.director}}</p>
+        <p class="nameTitle" ng-if="favorite.title">{{favorite.title}}</p>
+        <p class="itemAttr" ng-if="favorite.title">Episode {{favorite.episode_id}}</p>
+        <p class="itemAttr" ng-if="favorite.title">Released: {{favorite.release_date}}</p>
+        <p class="itemAttr" ng-if="favorite.title">Directed by: {{favorite.director}}</p>
 
         <!-- species -->
-        <p class="bold" ng-if="favorite.classification">{{favorite.name}}</p>
-        <p ng-if="favorite.classification" class="capitalize">Classification: {{favorite.classification}}</p>
-        <p ng-if="favorite.classification">Language: {{favorite.language}}</p>
-        <p ng-if="favorite.classification">Homeworld: {{favorite.homeworldInfo}}</p>  
+        <p class="itemAttr capitalize" ng-if="favorite.classification">Classification: {{favorite.classification}}</p>
+        <p class="itemAttr" ng-if="favorite.classification">Language: {{favorite.language}}</p>
+        <p class="itemAttr" ng-if="favorite.classification">Homeworld: {{favorite.homeworldInfo}}</p>  
 
         <!-- vehicles and starships -->
-        <p class="bold" ng-if="favorite.model">{{favorite.name}}</p>
-        <p ng-if="favorite.model">Model: {{favorite.model}}</p>
-        <p ng-if="favorite.model">Crew size: {{favorite.crew}}</p>
-        <p ng-if="favorite.model">Cost in credits: {{favorite.cost_in_credits}}</p>
-            
-            
-        <p ng-click="vm.removeFavorite(favorite)">Remove Favorite</p>
-   
-   
+        <p class="itemAttr capitalize" ng-if="favorite.vehicle_class">Class: {{favorite.vehicle_class}}</p>
+        <p class="itemAttr capitalize" ng-if="favorite.starship_class">Class: {{favorite.starship_class}}</p>
+        <p class="itemAttr" ng-if="favorite.model">Crew size: {{favorite.crew}}</p>
+        <p class="itemAttr capitalize" ng-if="favorite.model">Cost in credits: {{favorite.cost_in_credits}}</p>
+        
+        <div ng-click="vm.removeFavorite(favorite)" class="favoriteIcon">
+            <i class="fas fa-star removeFavorite"></i>
+            <span>Remove Favorite</span>
+        </div>
     </div>
 </section>
