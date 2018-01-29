@@ -1,4 +1,4 @@
-swapiApp.service('SearchService', ['$http', function($http) {
+swapiApp.service('SearchService', ['$http', '$mdDialog',  function($http, $mdDialog) {
     console.log('SearchService Loaded');
     
     const self = this;
@@ -8,13 +8,17 @@ swapiApp.service('SearchService', ['$http', function($http) {
         searchFilters: {list: []}
     };
 
+    self.selectOptions = { type: self.swapiInfo.searchFilters.list.people}
+    console.log(self.selectOptions);
+    
+
     self.searchReturn = {list: []};
     
 
     function getSearchFilters() {
         $http.get(url)
             .then(function (response) {
-                // console.log('swapi search: ', response);
+                console.log('swapi search: ', response);
                 self.swapiInfo.searchFilters.list = response.data
             })
             .catch(function (response) {
@@ -53,6 +57,7 @@ swapiApp.service('SearchService', ['$http', function($http) {
                 })
                 .catch(function (response) {
                     console.log(`${searchInfo.searchString} search error: `, response);
+                    openOffscreen();
                 });  
         }
     }
@@ -104,10 +109,60 @@ swapiApp.service('SearchService', ['$http', function($http) {
         $http.post('/favorites', favoriteToAdd)
             .then(function (response) {
                 // console.log('favorites response: ', response);
+                self.addToFavoritesDialog(item);
             })
             .catch(function (response) {
-                console.log('error saving favorite:', response);
+                // console.log('error saving favorite:', response);
+                self.alreadyInFavoritesDialog();
             });
     }
+
+    self.alreadyInFavoritesDialog = function () {
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title('I\'ve got a bad feeling about this...')
+            .textContent(`This is already in your favorites.`)
+            .ariaLabel('Added Favorite')
+            .ok('Fine!')
+            // Or you can specify the rect to do the transition from
+            .openFrom({
+              top: -50,
+              width: 30,
+              height: 80
+            })
+            .closeTo({
+              left: 1500
+            })
+        );
+      };
+
+      self.addToFavoritesDialog = function (favorite) {
+        let item;
+        if (favorite.hasOwnProperty('name')) {
+            item = favorite.name
+        }
+        if (favorite.hasOwnProperty('title')) {
+            item = favorite.title
+        }
+
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title('The Force is strong with this choice!')
+            .textContent(`${item} has been added to your favorites.`)
+            .ariaLabel('Added Favorite')
+            .ok('Got it!')
+            // Or you can specify the rect to do the transition from
+            .openFrom({
+              top: -50,
+              width: 30,
+              height: 80
+            })
+            .closeTo({
+              left: 1500
+            })
+        );
+      };
 
 }]);

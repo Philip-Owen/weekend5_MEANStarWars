@@ -1,4 +1,4 @@
-swapiApp.controller('SearchController', ['SearchService', function(SearchService) {
+swapiApp.controller('SearchController', ['SearchService', '$mdDialog', function(SearchService, $mdDialog) {
     console.log('in SearchController');
     const self = this;
 
@@ -24,6 +24,9 @@ swapiApp.controller('SearchController', ['SearchService', function(SearchService
     self.addFav = function(item) {
         SearchService.addToFavorites(item);
     }
+
+
+
 
 
 }]);
