@@ -1,0 +1,90 @@
+
+.itemList {
+    position: relative;
+    display: inline-block;
+    border: 1px solid black;
+    width: 280px;
+    height: 250px;
+    margin: 20px;
+}
+
+.logoGif {
+    position: absolute;
+    height: 100px;
+    width: auto;
+    right: 0
+}
+
+.md-button.md-default-theme.md-accent, .md-button.md-accent {
+    color: rgb(240, 224, 9);
+}
+
+md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
+    color: rgb(240, 224, 9);
+    background: rgb(240, 224, 9);
+}
+
+md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar .md-button._md-nav-button.md-unselected {
+    color: rgb(255, 255, 255);
+}
+
+._md-nav-bar-list{
+    background-color: #252421;
+    color: white;
+    height: 100px;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+
+.nameTitle {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 17px;
+}
+
+.edgePadding {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+.itemAttr {
+    font-size: 15px;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.favoriteIcon {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.addFavorite { 
+    font-size: 20px;
+    color: #FFD74F;
+}
+
+.addFavorite:hover {
+    font-size: 25px;
+    color: #FFC058;
+}
+
+.removeFavorite { 
+    font-size: 20px;
+    color: #FFD74F;
+}
+
+.removeFavorite:hover {
+    font-size: 25px;
+    color: rgb(248, 0, 0);
+}  
+
+#searchDiv {
+    margin-top: 70px;
+    margin-left: 30px;
+}
+
+#mainTitle {
+    color: rgb(240, 224, 9);
+}

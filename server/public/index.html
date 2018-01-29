@@ -16,11 +16,21 @@
     <!-- Client -->
     <script src="scripts/client.js"></script>
     <!-- Controllers -->
-    <!-- <script src="scripts/controllers/addEmployee.controller.js"></script> -->
+    <script src="scripts/controllers/search.controller.js"></script>
+    <script src="scripts/controllers/favorites.controller.js"></script>
     <!-- Services -->
-    <!-- <script src="scripts/services/reports.service.js"></script> -->
+    <script src="scripts/services/search.service.js"></script>
+    <script src="scripts/services/favorites.service.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body ng-app="swapiApp">
+    <nav ng-include="'/views/templates/nav.template.html'"></nav>
+
+    <main ng-view>
+        <!-- Left Blank -->
+    </main>
     
 </body>
 </html>
