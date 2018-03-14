@@ -1,4 +1,4 @@
-swapiApp.service('SearchService', ['$http', '$mdDialog',  function($http, $mdDialog) {
+swapiApp.service('SearchService', ['$http', '$mdDialog', 'FavoritesService', function($http, $mdDialog, FavoritesService) {
   console.log('SearchService Loaded');
 
   const self = this;
@@ -58,7 +58,10 @@ swapiApp.service('SearchService', ['$http', '$mdDialog',  function($http, $mdDia
               console.log('Error getting species results :', response);
           });
       } else {
-        generalSearch(searchInfo);
+        generalSearch(searchInfo)
+          .then( function(response) {
+          self.searchReturn.list = response;
+        });
       }
   };
 
@@ -76,6 +79,7 @@ swapiApp.service('SearchService', ['$http', '$mdDialog',  function($http, $mdDia
           });
       }
     }
+    console.log(results);
     return results;
   }
 
@@ -163,5 +167,7 @@ swapiApp.service('SearchService', ['$http', '$mdDialog',  function($http, $mdDia
         })
       );
     };
+
+    FavoritesService.getFavorites();
 
 }]);
