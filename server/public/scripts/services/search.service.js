@@ -114,6 +114,7 @@ swapiApp.service('SearchService', ['$http', '$mdDialog', 'FavoritesService', fun
       .then(function (response) {
           // console.log('favorites response: ', response);
           self.addToFavoritesDialog(item);
+          FavoritesService.getFavorites();
       })
       .catch(function (response) {
           // console.log('error saving favorite:', response);
