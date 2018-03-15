@@ -1,5 +1,5 @@
 swapiApp.service('FavoritesService', ['$http','$mdDialog', function($http, $mdDialog) {
-  console.log('FavoritesService Loaded');
+  // console.log('FavoritesService Loaded');
 
   const self = this;
   self.favorites = {list:[]};
@@ -7,7 +7,7 @@ swapiApp.service('FavoritesService', ['$http','$mdDialog', function($http, $mdDi
   self.getFavorites = function() {
     $http.get('/favorites')
       .then(function (response) {
-          console.log('get favorites: ', response.data);
+          // console.log('get favorites: ', response.data);
           getFavoritesInfo(response.data);
       })
       .catch(function (response) {
@@ -32,7 +32,6 @@ swapiApp.service('FavoritesService', ['$http','$mdDialog', function($http, $mdDi
           }
 
             favoritesArray.push(response.data);
-            console.log('favs', favoritesArray);
         })
         .catch(function (response) {
             console.log('error converting favorites:', response);
@@ -46,7 +45,7 @@ swapiApp.service('FavoritesService', ['$http','$mdDialog', function($http, $mdDi
   self.removeFavorite = function(item) {
     $http.delete('/favorites/' + item._id)
       .then(function (response) {
-          console.log('deleted favorite: ', response.data);
+          // console.log('deleted favorite: ', response.data);
           removeFavoritesDialog(item);
           self.getFavorites();
       })

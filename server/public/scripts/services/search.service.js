@@ -1,5 +1,5 @@
 swapiApp.service('SearchService', ['$http', '$mdDialog', 'FavoritesService', function($http, $mdDialog, FavoritesService) {
-  console.log('SearchService Loaded');
+  // console.log('SearchService Loaded');
 
   const self = this;
   let url = 'https://swapi.co/api/';
@@ -9,16 +9,13 @@ swapiApp.service('SearchService', ['$http', '$mdDialog', 'FavoritesService', fun
   };
 
   self.selectOptions = { type: self.swapiInfo.searchFilters.list.people};
-  console.log(self.selectOptions);
-
 
   self.searchReturn = {list: []};
-
 
   function getSearchFilters() {
     $http.get(url)
       .then(function (response) {
-          console.log('swapi search: ', response);
+          // console.log('swapi search: ', response);
           self.swapiInfo.searchFilters.list = response.data;
       })
       .catch(function (response) {
@@ -30,7 +27,7 @@ swapiApp.service('SearchService', ['$http', '$mdDialog', 'FavoritesService', fun
   function generalSearch(searchInfo) {
     return $http.get(url + searchInfo.url + search + searchInfo.searchString)
       .then(function (response) {
-          console.log(`${searchInfo.searchString} search: `, response.data.results);
+          // console.log(`${searchInfo.searchString} search: `, response.data.results);
           return response.data.results;
       })
       .catch(function (response) {
@@ -79,7 +76,6 @@ swapiApp.service('SearchService', ['$http', '$mdDialog', 'FavoritesService', fun
           });
       }
     }
-    console.log(results);
     return results;
   }
 

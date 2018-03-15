@@ -11,7 +11,7 @@ router.post('/', (req,res)=> {
             console.log('error on saving favorite', err);
             res.sendStatus(500);
         } else {
-            console.log('new saved favorite', savedFavorite);
+            // console.log('new saved favorite', savedFavorite);
             res.sendStatus(201);
         }
     });
@@ -23,7 +23,7 @@ router.get('/', (req,res) => {
             console.log('error on get favorites', err);
             res.sendStatus(500);
         } else {
-            console.log('found favorites', favorites);
+            // console.log('found favorites', favorites);
             res.send(favorites);
         }
     });
@@ -36,7 +36,7 @@ router.delete('/:id', (req,res) => {
             console.log('error on removedFav', err);
             res.sendStatus(500);
         } else {
-            console.log('found removedFav', removedFav);
+            // console.log('found removedFav', removedFav);
             res.sendStatus(200);
         }
     });

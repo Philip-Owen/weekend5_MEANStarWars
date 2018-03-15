@@ -1,5 +1,5 @@
 swapiApp.controller('SearchController', ['SearchService', '$mdDialog', function(SearchService, $mdDialog) {
-    console.log('in SearchController');
+    // console.log('in SearchController');
     const self = this;
 
     self.searchFilters = SearchService.swapiInfo.searchFilters;

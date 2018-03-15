@@ -1,5 +1,5 @@
 swapiApp.controller('FavoritesController', ['FavoritesService', function(FavoritesService) {
-    console.log('in FavoritesController');
+    // console.log('in FavoritesController');
     const self = this;
 
     self.favoritesToList = FavoritesService.favorites;
