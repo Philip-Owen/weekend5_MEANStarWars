@@ -32,12 +32,13 @@ swapiApp.service('FavoritesService', ['$http','$mdDialog', function($http, $mdDi
           }
 
             favoritesArray.push(response.data);
+            console.log('favs', favoritesArray);
         })
         .catch(function (response) {
             console.log('error converting favorites:', response);
         });
-      self.favorites.list = favoritesArray;
     }
+    self.favorites.list = favoritesArray;
   }
 
   self.getFavorites();
