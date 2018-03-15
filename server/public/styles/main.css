@@ -60,7 +60,7 @@ md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar 
     bottom: 10px;
 }
 
-.addFavorite { 
+.addFavorite {
     font-size: 20px;
     color: #FFD74F;
 }
@@ -70,7 +70,7 @@ md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar 
     color: #FFC058;
 }
 
-.removeFavorite { 
+.removeFavorite {
     font-size: 20px;
     color: #FFD74F;
 }
@@ -78,7 +78,16 @@ md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar 
 .removeFavorite:hover {
     font-size: 25px;
     color: rgb(248, 0, 0);
-}  
+}
+
+#resultsMain {
+  margin-left: 10px;
+}
+
+#favoritesMain {
+  margin-top: 60px;
+  margin-left: 10px;
+}
 
 #searchDiv {
     margin-top: 70px;

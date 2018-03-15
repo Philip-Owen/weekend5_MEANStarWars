@@ -11,11 +11,11 @@
 </section>
 <section layout-xs="row" layout-wrap>
     <div flex="100" class="itemList" ng-repeat="favorite in vm.favoritesToList.list">
-        
+
         <p ng-if="favorite.name" class="nameTitle">{{favorite.name}}</p>
 
         <!-- people -->
-        
+
         <p class="itemAttr" ng-if="favorite.birth_year">Born: {{favorite.birth_year}}</p>
         <p class="itemAttr"ng-if="favorite.birth_year"><span class="capitalize">{{favorite.gender}}</span> {{favorite.speciesInfo}}</p>
         <p class="itemAttr"ng-if="favorite.birth_year">Height: {{favorite.height}} cm</p>
@@ -34,14 +34,14 @@
         <!-- species -->
         <p class="itemAttr capitalize" ng-if="favorite.classification">Classification: {{favorite.classification}}</p>
         <p class="itemAttr" ng-if="favorite.classification">Language: {{favorite.language}}</p>
-        <p class="itemAttr" ng-if="favorite.classification">Homeworld: {{favorite.homeworldInfo}}</p>  
+        <p class="itemAttr" ng-if="favorite.classification">Homeworld: {{favorite.homeworldInfo}}</p>
 
         <!-- vehicles and starships -->
         <p class="itemAttr capitalize" ng-if="favorite.vehicle_class">Class: {{favorite.vehicle_class}}</p>
         <p class="itemAttr capitalize" ng-if="favorite.starship_class">Class: {{favorite.starship_class}}</p>
         <p class="itemAttr" ng-if="favorite.model">Crew size: {{favorite.crew}}</p>
         <p class="itemAttr capitalize" ng-if="favorite.model">Cost in credits: {{favorite.cost_in_credits}}</p>
-        
+
         <div ng-click="vm.removeFavorite(favorite)" class="favoriteIcon">
             <i class="fas fa-star removeFavorite"></i>
             <span>Remove Favorite</span>
