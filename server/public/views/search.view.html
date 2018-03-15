@@ -10,14 +10,14 @@
 <section>
     <div layout-sm="row" id="resultsMain">
         <div flex>
-            <h3>Results:</h3>
+            <h3 id="">Results:</h3>
         </div>
     </div>
     <div layout-xs="row" layout-wrap>
         <div flex="100" class="itemList" ng-repeat="item in vm.searchReturn.list">
 
             <p class="nameTitle" ng-if="item.name">{{item.name}}</p>
-            
+
             <!-- people -->
             <p class="itemAttr" ng-if="item.birth_year">Born: {{item.birth_year}}</p>
             <p class="itemAttr" ng-if="item.birth_year"><span class="capitalize">{{item.gender}}</span> {{item.speciesInfo.name}}</p>
@@ -37,14 +37,14 @@
             <!-- species -->
             <p class="itemAttr capitalize" ng-if="item.classification">Classification: {{item.classification}}</p>
             <p class="itemAttr capitalize" ng-if="item.classification">Language: {{item.language}}</p>
-            <p class="itemAttr" ng-if="item.classification">Homeworld: {{item.homeworldInfo.name}}</p>  
+            <p class="itemAttr" ng-if="item.classification">Homeworld: {{item.homeworldInfo.name}}</p>
 
             <!-- vehicles and starships -->
             <p class="itemAttr capitalize" ng-if="item.vehicle_class">Class: {{item.vehicle_class}}</p>
             <p class="itemAttr capitalize" ng-if="item.starship_class">Class: {{item.starship_class}}</p>
             <p class="itemAttr" ng-if="item.model">Crew size: {{item.crew}}</p>
             <p class="itemAttr capitalize" ng-if="item.model">Cost in credits: {{item.cost_in_credits}}</p>
-            
+
             <!-- add favorite -->
             <div ng-click="vm.addFav(item)" class="favoriteIcon">
                 <i class="far fa-star addFavorite"></i>
